@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/pendu_ico.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/fond_maison.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
