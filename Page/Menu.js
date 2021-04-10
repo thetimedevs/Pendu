@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, ImageBackground, Dimensions, Button, TouchableO
 export default function App() {
      return (
     <View style={[styles.container]}>
-      <ImageBackground source={require('../assets/fond.png')} style={styles.image} blurRadius={2}>
+      <ImageBackground source={require('../assets/fond_arbres.png')} style={styles.image} blurRadius={2}>
         <Text style={[styles.titre, styles.titre]}>Jeux du pendu !</Text>  
 
   {/* Button 1 Joueur */}
