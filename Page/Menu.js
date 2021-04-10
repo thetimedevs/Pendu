@@ -2,8 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions, Button, TouchableOpacity, Alert } from 'react-native';
 
+
 export default function App() {
-  return (
+     return (
     <View style={[styles.container]}>
       <ImageBackground source={require('../assets/fond.png')} style={styles.image} blurRadius={2}>
         <Text style={[styles.titre, styles.titre]}>Jeux du pendu !</Text>  
@@ -20,8 +21,8 @@ export default function App() {
   </TouchableOpacity>
 
   {/* Button Option */}
-    <Text>{'\n\n\n'}</Text>
-  <TouchableOpacity style={styles.appButtonContainer}>
+    <Text>{'\n\n\n\n'}</Text>
+  <TouchableOpacity style={styles.appButtonContainer_option}>
     <Text style={styles.appButtonText}>Option</Text>
   </TouchableOpacity>
 
@@ -65,6 +66,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12
+  },
+  appButtonContainer_option: {
+    elevation: 8,
+    backgroundColor: "#CA2856",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
   },
   appButtonText: {
     fontSize: 18,
