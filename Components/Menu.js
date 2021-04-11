@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     position: 'absolute',
     top: 70,
-    left: 80,
+    left: 90,
     color: 'white',
   },
   text: {
