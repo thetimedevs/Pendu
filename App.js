@@ -1,20 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Menu from './Page/Menu';
+import Navigation from './Navigation/Navigation'
 
-export default function App() {
-  return (
-    <View style={[styles.container]}>
-        <Menu/>
-    </View>
-  );
-}
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+export default class App extends React.Component{
+  render() {
+    return (
+        <Navigation/>
+    );
+  }
+};
