@@ -1,13 +1,16 @@
+import { createStackNavigator, createAppContainer } from 'react-navigation-stack'
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Menu from './Page/Menu';
+import Menu from './Components/Menu';
 
-export default function App() {
-  return (
-    <View style={[styles.container]}>
-        <Menu/>
-    </View>
-  );
+export default class App extends React.Component{
+  render() {
+    return (
+        <View style={[styles.container]}>
+          <Menu/>
+        </View>
+    );
+  }
 }
 
 

@@ -1,35 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Dimensions, Button, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
 
 
-export default function App() {
-     return (
+export default class Menu extends React.Component {
+
+  _goToGame() {
+    console.log("1P")
+    this.props.navigation.navigate("Jeu")
+}
+
+  render() {
+   return (
     <View style={[styles.container]}>
       <ImageBackground source={require('../assets/fond_arbres.png')} style={styles.image} blurRadius={2}>
-        <Text style={[styles.titre, styles.titre]}>Jeux du pendu !</Text>  
+        <Text style={[styles.titre, styles.titre]}>Jeux du pendu !</Text>
 
-  {/* Button 1 Joueur */}
-  <TouchableOpacity style={styles.appButtonContainer}>
-    <Text style={styles.appButtonText}>1 Joueur</Text>
-  </TouchableOpacity>
+    {/* Button 1 Joueur */}
+    <TouchableOpacity
+        style={styles.appButtonContainer}
+        onPress={() => this._goToGame()}>
+      <Text style={styles.appButtonText}>1 Joueur</Text>
+    </TouchableOpacity>
 
-  {/* Button 2 Joueurs */}
-    <Text>{'\n'}</Text>
-  <TouchableOpacity style={styles.appButtonContainer}>
-    <Text style={styles.appButtonText}>2 Joueurs</Text>
-  </TouchableOpacity>
+    {/* Button 2 Joueurs */}
+      <Text>{'\n'}</Text>
+    <TouchableOpacity style={styles.appButtonContainer}>
+      <Text style={styles.appButtonText}>2 Joueurs</Text>
+    </TouchableOpacity>
 
-  {/* Button Option */}
-    <Text>{'\n\n\n\n'}</Text>
-  <TouchableOpacity style={styles.appButtonContainer_option}>
-    <Text style={styles.appButtonText}>Option</Text>
-  </TouchableOpacity>
+    {/* Button Option */}
+      <Text>{'\n\n\n\n'}</Text>
+    <TouchableOpacity style={styles.appButtonContainer_option}>
+      <Text style={styles.appButtonText}>Option</Text>
+    </TouchableOpacity>
 
-      <StatusBar backgroundColor="orange" barStyle="light-content"/>
-      </ImageBackground>
-    </View>
-  );
+        <StatusBar backgroundColor="orange" barStyle="light-content"/>
+        </ImageBackground>
+      </View>
+    );
+  }
 }
 
 
