@@ -14,16 +14,15 @@ class Jeu extends React.Component {
          value: this.props.navigation.state.params.mot 
          };
 
-         let nb = this.state.value.length
-
          let mot = this.props.navigation.state.params.mot
     
          
        }
-    render() {
+      
+    render() { 
         var myloop = [];
-
-for (let i = 0; i < 8; i++) {
+        var nb = this.state.value.length
+for (let i = 0; i < nb; i++) {
   myloop.push(
     <Text style={[styles.titre]}> _ </Text>
   );
