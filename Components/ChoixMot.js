@@ -32,7 +32,7 @@ class ChoixMot extends React.Component {
                     onSubmitEditing={() => this._play()}
                 />
                 <Button
-                    title='Rechercher'
+                    title='Jouer'
                     onPress={() => this._play()}
                     disabled={this.state.word.length < 5 || this.state.word.length > 14}
                 />
