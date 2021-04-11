@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-    return (
-        <View>
-            <Text>Page 1 Joueur</Text>
-        </View>
-        );
-    }
+class Jeu extends React.Component {
+    render() {
+        console.log(this.props.navigation.state.params.mot)
+        let mot  = this.props.navigation.state.params.mot
+        return (
+            <View>
+                <Text>Le mot à trouver est { mot }</Text>
+            </View>
+            );
+        }
+}
+
+export default Jeu

@@ -3,29 +3,36 @@ import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
 
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
 
-  _goToGame() {
-    console.log("1P")
-    this.props.navigation.navigate("Jeu")
-}
+  _onePlayer() {
+    console.log('1P')
+    this.props.navigation.navigate('Jeu', { mot: 'ELEPHANT' })
+  }
+
+  _twoPlayers() {
+    console.log("2P")
+    this.props.navigation.navigate('ChoixMot')
+  }
 
   render() {
    return (
     <View style={[styles.container]}>
       <ImageBackground source={require('../assets/fond_arbres.png')} style={styles.image} blurRadius={2}>
-        <Text style={[styles.titre, styles.titre]}>Jeux du pendu !</Text>
+        <Text style={[styles.titre, styles.titre]}>Jeu du pendu !</Text>
 
     {/* Button 1 Joueur */}
     <TouchableOpacity
         style={styles.appButtonContainer}
-        onPress={() => this._goToGame()}>
+        onPress={() => this._onePlayer()}>
       <Text style={styles.appButtonText}>1 Joueur</Text>
     </TouchableOpacity>
 
     {/* Button 2 Joueurs */}
       <Text>{'\n'}</Text>
-    <TouchableOpacity style={styles.appButtonContainer}>
+    <TouchableOpacity
+        style={styles.appButtonContainer}
+        onPress={() => this._twoPlayers()}>
       <Text style={styles.appButtonText}>2 Joueurs</Text>
     </TouchableOpacity>
 
@@ -35,7 +42,7 @@ export default class Menu extends React.Component {
       <Text style={styles.appButtonText}>Option</Text>
     </TouchableOpacity>
 
-        <StatusBar backgroundColor="orange" barStyle="light-content"/>
+        <StatusBar backgroundColor='orange' barStyle='light-content'/>
         </ImageBackground>
       </View>
     );
@@ -92,3 +99,5 @@ const styles = StyleSheet.create({
     textTransform: "uppercase"
   },
 });
+
+export default Menu
