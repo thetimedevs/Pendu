@@ -7,26 +7,23 @@ class Jeu extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-         value: this.props.navigation.state.params.mot 
+         mot: this.props.navigation.state.params.mot
          };
        }
-      
-    render() { 
-        console.log(this.props.navigation.state.params.mot)
-        let mot = this.props.navigation.state.params.mot
-        
-        var myloop = [];
-        let nb = this.state.value.length
+
+    render() {
+        let myWord = [];
+        let nb = this.state.mot.length
 for (let i = 0; i < nb; i++) {
-  myloop.push(
-    <Text style={[styles.titre]}> _ </Text>
+  myWord.push(
+    <Text style={[styles.titre]} key={i}> _ </Text>
   );
 }
-        
+
         return (
             <View style={styles.container}>
                  <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-               <Text style={[styles.titre]}>Le mot à trouver est {"\n\n"} {nb} lettres {'\n\n\n\n'}{myloop} {'\n\n'}</Text>
+               <Text style={[styles.titre]}>Le mot à trouver est {"\n\n"} {nb} lettres {'\n\n\n\n'}{myWord} {'\n\n'}</Text>
                <View style={styles.clavier}>
                <Button title="A"/>
                 <Text> </Text>
@@ -103,7 +100,7 @@ const styles = StyleSheet.create({
       flexWrap: "wrap",
       alignItems:'center',
     justifyContent:'center',
-    },  
+    },
     titre: {
         fontSize: 25,
         alignItems: 'center',
