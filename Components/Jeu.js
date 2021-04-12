@@ -24,58 +24,58 @@ for (let i = 0; i < nb; i++) {
             <View style={styles.container}>
                  <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
                <Text style={[styles.titre]}>Le mot à trouver est {"\n\n"} {nb} lettres {'\n\n\n\n'}{myWord} {'\n\n'}</Text>
-               <View style={styles.clavier}>
-               <Button title="A"/>
+               <View  style={styles.clavier}>
+               <Button value="A" title="A"/>
                 <Text> </Text>
-               <Button title="B"/>
+               <Button value="B" title="B"/>
                <Text> </Text>
-               <Button title="C"/>
+               <Button value="C" title="C"/>
                <Text> </Text>
-               <Button title="D"/>
+               <Button value="D" title="D"/>
                <Text> </Text>
-               <Button title="E"/>
+               <Button value="E" title="E"/>
                <Text> </Text>
-               <Button title="F"/>
+               <Button value="F" title="F"/>
                <Text> </Text>
-               <Button title="G"/>
+               <Button value="G" title="G"/>
                <Text> </Text>
-               <Button title="H"/>
+               <Button value="H" title="H"/>
                <Text> </Text>
-               <Button title="I"/>
+               <Button value="I" title="I"/>
                <Text> </Text>
-               <Button title="J"/>
+               <Button value="J" title="J"/>
                <Text> </Text>
-               <Button title="K"/>
+               <Button value="K" title="K"/>
                <Text> </Text>
-               <Button title="L"/>
+               <Button value="L" title="L"/>
                <Text> </Text>
-               <Button title="M"/>
+               <Button value="M" title="M"/>
                <Text> </Text>
-               <Button title="N"/>
+               <Button value="N" title="N"/>
                <Text> </Text>
-               <Button title="O"/>
+               <Button value="O" title="O"/>
                <Text> </Text>
-               <Button title="P"/>
+               <Button value="P" title="P"/>
                <Text> </Text>
-               <Button title="Q"/>
+               <Button value="Q" title="Q"/>
                <Text> </Text>
-               <Button title="R"/>
+               <Button value="R" title="R"/>
                <Text> </Text>
-               <Button title="S"/>
+               <Button value="S" title="S"/>
                <Text> </Text>
-               <Button title="T"/>
+               <Button value="T" title="T"/>
                <Text> </Text>
-               <Button title="U"/>
+               <Button value="U" title="U"/>
                <Text> </Text>
-               <Button title="V"/>
+               <Button value="V" title="V"/>
                <Text> </Text>
-               <Button title="W"/>
+               <Button value="W" title="W"/>
                <Text> </Text>
-               <Button title="X"/>
+               <Button value="X" title="X"/>
                <Text> </Text>
-               <Button title="Y"/>
+               <Button value="Y" title="Y"/>
                <Text> </Text>
-               <Button title="Z"/>
+               <Button value="Z" title="Z"/>
                </View>
                  </ImageBackground>
             </View>
@@ -99,23 +99,24 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       flexWrap: "wrap",
       alignItems:'center',
-    justifyContent:'center',
+      justifyContent:'center',
     },
     titre: {
-        fontSize: 25,
-        alignItems: 'center',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        position: 'absolute',
-        top: 70,
-        left: 40,
-        color: 'white',
+      flex: 1,
+      top: 60,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 25,
+      fontWeight: 'bold',
+      textAlign: "center",
+      color: 'white',
       },
     image: {
-        flex: 1,
-        width: Dimensions.get('window').width,
-        resizeMode: "contain",
-        justifyContent: "center",
+      flex: 1,
+      width: Dimensions.get('window').width,
+      resizeMode: "contain",
+      justifyContent: "center",
       },
     text: {
       alignItems: 'center',
