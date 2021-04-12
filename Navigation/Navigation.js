@@ -15,7 +15,7 @@ const MainStackNavigator = createStackNavigator({
     Jeu: {
         screen: Jeu,
         navigationOptions: {
-            headerShown: false
+            headerShown: false, 
         },
     },
     ChoixMot: {
