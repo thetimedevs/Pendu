@@ -23,7 +23,7 @@ for (let i = 0; i < nb; i++) {
         return (
             <View style={styles.container}>
                  <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-               <Image style={styles.pendu_img} source={require("C:/Users/Administrateur/Desktop/Pendu/Pendu/img_pendu/hang0.png")}/>
+               <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
                <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
                <View  style={styles.clavier}>
                <Button value="A" title="A"/>
@@ -114,10 +114,11 @@ const styles = StyleSheet.create({
       color: 'white',
       },
     pendu_img: {
+      opacity:0.8,
+      borderRadius: 5,
       position: "absolute",
       top: 10,
-      width: 300,
-      height: 100
+      left: 30
       },
     image: {
       flex: 1,
