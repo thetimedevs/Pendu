@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button, Image } from 'react-native';
 
 
 class Jeu extends React.Component {
@@ -23,7 +23,8 @@ for (let i = 0; i < nb; i++) {
         return (
             <View style={styles.container}>
                  <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-               <Text style={[styles.titre]}>Le mot à trouver est {"\n\n"} {nb} lettres {'\n\n\n\n'}{myWord} {'\n\n'}</Text>
+               <Image style={styles.pendu_img} source={require("C:/Users/Administrateur/Desktop/Pendu/Pendu/img_pendu/hang0.png")}/>
+               <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
                <View  style={styles.clavier}>
                <Button value="A" title="A"/>
                 <Text> </Text>
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     },
     titre: {
       flex: 1,
-      top: 60,
+      top: 500,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -111,6 +112,12 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: "center",
       color: 'white',
+      },
+    pendu_img: {
+      position: "absolute",
+      top: 10,
+      width: 300,
+      height: 100
       },
     image: {
       flex: 1,
