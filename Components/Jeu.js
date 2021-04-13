@@ -7,12 +7,17 @@ class Jeu extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-         mot: this.props.navigation.state.params.mot
+            mot: this.props.navigation.state.params.mot,
+            dDisabled: false,
+            eDisabled: false,
+            fDisabled: false,
+            gDisabled: false,
+            hDisabled: false,
          };
        }
        disabledButton(btn) {
         this.setState({
-          isButtonDisabled: true,
+            isButtonDisabled: true,
         });
        }
 
@@ -37,15 +42,15 @@ class Jeu extends React.Component {
                <Text> </Text>
                <Button onPress={() => this.setState({ disabled: true })} disabled={this.state.disabled} value="C" title="C"/>
                <Text> </Text>
-               <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="D" title="D"/>
+               <Button onPress={() => this.setState({ dDisabled: true })} disabled={this.state.dDisabled} value="D" title="D"/>
                <Text> </Text>
-               <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="E" title="E"/>
+               <Button onPress={() => this.setState({ eDisabled: true })} disabled={this.state.eDisabled} value="E" title="E"/>
                <Text> </Text>
-               <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="F" title="F"/>
+               <Button onPress={() => this.setState({ fDisabled: true })} disabled={this.state.fDisabled} value="F" title="F"/>
                <Text> </Text>
-               <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="G" title="G"/>
+               <Button onPress={() => this.setState({ gDisabled: true })} disabled={this.state.gDisabled} value="G" title="G"/>
                <Text> </Text>
-               <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="H" title="H"/>
+               <Button onPress={() => this.setState({ hDisabled: true })} disabled={this.state.hDisabled} value="H" title="H"/>
                <Text> </Text>
                <Button onPress={() => this.disabledButton()} disabled={this.state.isButtonDisabled} value="I" title="I"/>
                <Text> </Text>
