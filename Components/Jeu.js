@@ -37,6 +37,10 @@ class Jeu extends React.Component {
          };
        }
 
+       _test() {
+        console.log('Cliqué');
+      }
+
     render() {
         let myWord = [];
         let nb = this.state.mot.length
@@ -46,15 +50,17 @@ class Jeu extends React.Component {
           );
         }
 
+    
+
         return (
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
                <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
                <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
                <View  style={styles.clavier}>
-               <Button onPress={() => this.setState({ aDisabled: true })} disabled={this.state.aDisabled} value="A" title="A"/>
+               <Button onPress={() => this.setState({ aDisabled: true}) && _test()} disabled={this.state.aDisabled} value="A" title="A"/>
                <Text> </Text>
-               <Button onPress={() => this.setState({ bDisabled: true })} disabled={this.state.bDisabled} value="B" title="B"/>
+               <Button onPress={() => this.setState({ bDisabled: true }) && _test()} disabled={this.state.bDisabled} value="B" title="B"/>
                <Text> </Text>
                <Button onPress={() => this.setState({ cDisabled: true })} disabled={this.state.cDisabled} value="C" title="C"/>
                <Text> </Text>
