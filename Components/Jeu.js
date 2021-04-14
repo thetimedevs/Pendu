@@ -8,9 +8,9 @@ class Jeu extends React.Component {
         super(props);
         this.state = {
             mot: this.props.navigation.state.params.mot,
-            aDisabled: false,
-            bDisabled: false,
-            cDisabled: false,
+            disabledA: false,
+            disabledB: false,
+            disabledC: false,
             dDisabled: false,
             eDisabled: false,
             fDisabled: false,
@@ -37,9 +37,11 @@ class Jeu extends React.Component {
          };
        }
 
-       _test() {
-        console.log('Cliqué');
-      }
+    _test(value) {
+        console.log(value)
+        let toDisable = 'disabled' + value.toString()
+        this.setState({[toDisable] : true })
+    }
 
     render() {
         let myWord = [];
@@ -50,7 +52,7 @@ class Jeu extends React.Component {
           );
         }
 
-    
+
 
         return (
             <View style={styles.container}>
@@ -58,11 +60,11 @@ class Jeu extends React.Component {
                <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
                <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
                <View  style={styles.clavier}>
-               <Button onPress={() => this.setState({ aDisabled: true}) && _test()} disabled={this.state.aDisabled} value="A" title="A"/>
+               <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
                <Text> </Text>
-               <Button onPress={() => this.setState({ bDisabled: true }) && _test()} disabled={this.state.bDisabled} value="B" title="B"/>
+               <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
                <Text> </Text>
-               <Button onPress={() => this.setState({ cDisabled: true })} disabled={this.state.cDisabled} value="C" title="C"/>
+               <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
                <Text> </Text>
                <Button onPress={() => this.setState({ dDisabled: true })} disabled={this.state.dDisabled} value="D" title="D"/>
                <Text> </Text>
