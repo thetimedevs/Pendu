@@ -52,11 +52,11 @@ class Jeu extends React.Component {
                <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
                <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
                <View  style={styles.clavier}>
-               <Button onPress={() => this.setState({ adisabled: true, avalue })} disabled={this.state.adisabled} value="A" title="A"/>
+               <Button onPress={() => this.setState({ aDisabled: true })} disabled={this.state.aDisabled} value="A" title="A"/>
                <Text> </Text>
-               <Button onPress={() => this.setState({ bdisabled: true })} disabled={this.state.bdisabled} value="B" title="B"/>
+               <Button onPress={() => this.setState({ bDisabled: true })} disabled={this.state.bDisabled} value="B" title="B"/>
                <Text> </Text>
-               <Button onPress={() => this.setState({ cdisabled: true })} disabled={this.state.cdisabled} value="C" title="C"/>
+               <Button onPress={() => this.setState({ cDisabled: true })} disabled={this.state.cDisabled} value="C" title="C"/>
                <Text> </Text>
                <Button onPress={() => this.setState({ dDisabled: true })} disabled={this.state.dDisabled} value="D" title="D"/>
                <Text> </Text>
