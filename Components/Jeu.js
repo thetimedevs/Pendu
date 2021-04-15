@@ -39,7 +39,7 @@ class Jeu extends React.Component {
     _test(value) {
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
-        this.setState({error: this.state.error + 1}).then()
+        this.setState({error: this.state.error + 1})
     }
 
     render() {
