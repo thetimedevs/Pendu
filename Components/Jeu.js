@@ -5,6 +5,8 @@ class Jeu extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
+            avancement: [],
+            num: null,
             error: 0,
             mot: this.props.navigation.state.params.mot,
             disabledA: false,
@@ -37,18 +39,21 @@ class Jeu extends React.Component {
        }
 
     _test(value) {
+        console.log(this.state.avancement)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
         this.setState({error: this.state.error + 1})
         var str = this.props.navigation.state.params.mot
         var n = str.search(value);
         this.setState({num: n})
-
+        let newAvancement = this.state.avancement
+        newAvancement.push(value)
+        this.setState({avancement: newAvancement})
     }
 
     render() {
       console.log(this.state.error)
-      if (this.state.num = true) {
+      if (Number.isInteger(this.state.num)) {
         this.num = <Text>True</Text>
       }
         let myWord = [];
