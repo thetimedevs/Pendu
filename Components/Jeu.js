@@ -45,6 +45,13 @@ class Jeu extends React.Component {
     render() {
         let myWord = [];
         let nb = this.state.mot.length
+        let pendu
+        if (this.state.error === 0) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
+        } else if (this.state.error === 1) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
+        }
+
         for (let i = 0; i < nb; i++) {
           myWord.push(
             <Text style={[styles.titre]} key={i}> _ </Text>
@@ -54,7 +61,7 @@ class Jeu extends React.Component {
         return (
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${this.state.error}.png`)}/>
+              {this.pendu}
                <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
