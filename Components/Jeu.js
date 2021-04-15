@@ -56,7 +56,7 @@ class Jeu extends React.Component {
         return (
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${error_nb}.png`)}/>
+              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${error}.png`)}/>
                <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
