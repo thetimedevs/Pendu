@@ -40,18 +40,41 @@ class Jeu extends React.Component {
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
         this.setState({error: this.state.error + 1})
+        var str = this.props.navigation.state.params.mot
+        var n = str.search(value);
+        this.setState({num: n})
+
     }
 
     render() {
+      console.log(this.state.error)
+      if (this.state.num = true) {
+        this.num = <Text>True</Text>
+      }
         let myWord = [];
         let nb = this.state.mot.length
         let pendu
         if (this.state.error === 0) {
-            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
-            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
+        } else if (this.state.error === 2) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang2.png')}/>
+        } else if (this.state.error === 3) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang3.png')}/>
+        } else if (this.state.error === 4) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang4.png')}/>
+        } else if (this.state.error === 5) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
+        } else if (this.state.error === 6) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
+        } else if (this.state.error === 7) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
         }
-
+        if (this.state.error === 7) {
+          this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
+        }
+        
         for (let i = 0; i < nb; i++) {
           myWord.push(
             <Text style={[styles.titre]} key={i}> _ </Text>
@@ -62,6 +85,9 @@ class Jeu extends React.Component {
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
               {this.pendu}
+              {this.lost}
+              {this.win}
+              <Text>{this.state.num}</Text>
                <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
