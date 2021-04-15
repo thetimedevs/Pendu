@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button, Image } from 'react-native';
 
-
-
 class Jeu extends React.Component {
       constructor(props) {
         super(props);
@@ -41,9 +39,12 @@ class Jeu extends React.Component {
         console.log(value)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
+        let error = 1+error;
+        console.log(error)
     }
 
     render() {
+        let error = 0;
         let myWord = [];
         let nb = this.state.mot.length
         for (let i = 0; i < nb; i++) {
@@ -52,13 +53,11 @@ class Jeu extends React.Component {
           );
         }
         
-
-
         return (
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-               <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
-               <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
+              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${error_nb}.png`)}/>
+               <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
                <Text> </Text>
