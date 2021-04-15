@@ -52,8 +52,6 @@ class Jeu extends React.Component {
         this.num = <Text>True</Text>
       }
         let myWord = [];
-        let nb = this.state.mot.length
-        let pendu
         if (this.state.error === 0) {
           this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
@@ -74,10 +72,11 @@ class Jeu extends React.Component {
         if (this.state.error === 7) {
           this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
         }
-        
-        for (let i = 0; i < nb; i++) {
+
+        for (let i = 0; i < this.state.mot.length; i++) {
           myWord.push(
-            <Text style={[styles.titre]} key={i}> _ </Text>
+            // <Text style={[styles.titre]} key={i}>_</Text>
+            <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
           );
         }
 
