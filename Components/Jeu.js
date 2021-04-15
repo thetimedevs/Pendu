@@ -5,6 +5,7 @@ class Jeu extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
+            error: 0,
             mot: this.props.navigation.state.params.mot,
             disabledA: false,
             disabledB: false,
@@ -36,15 +37,12 @@ class Jeu extends React.Component {
        }
 
     _test(value) {
-        console.log(value)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
-        let error = 1+error;
-        console.log(error)
+        this.setState({error: this.state.error + 1}).then()
     }
 
     render() {
-        let error = 0;
         let myWord = [];
         let nb = this.state.mot.length
         for (let i = 0; i < nb; i++) {
@@ -52,11 +50,11 @@ class Jeu extends React.Component {
             <Text style={[styles.titre]} key={i}> _ </Text>
           );
         }
-        
+
         return (
             <View style={styles.container}>
               <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${error}.png`)}/>
+              <Image style={styles.pendu_img} source={require(`../img_pendu/hang${this.state.error}.png`)}/>
                <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
