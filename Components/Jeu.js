@@ -5,7 +5,6 @@ class Jeu extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-            place_letter: null,
             avancement: [],
             num: null,
             error: 0,
@@ -40,31 +39,24 @@ class Jeu extends React.Component {
        }
 
     _test(value) {
-        
+        console.log(this.state.avancement)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
-        
-        
+        this.setState({error: this.state.error + 1})
         var str = this.props.navigation.state.params.mot
         var n = str.search(value);
-        this.setState({place_letter: n})
-
+        this.setState({num: n})
         let newAvancement = this.state.avancement
         newAvancement.push(value)
         this.setState({avancement: newAvancement})
-
-        this.setState({place_letter: n})
     }
 
     render() {
-      console.log("place :", this.state.place_letter)
-      console.log(this.state.avancement)
       console.log(this.state.error)
       if (Number.isInteger(this.state.num)) {
         this.num = <Text>True</Text>
       }
         let myWord = [];
-        let myWord2 = [];
         if (this.state.error === 0) {
           this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
@@ -86,37 +78,12 @@ class Jeu extends React.Component {
           this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
         }
 
-        /*if(this.state.place_letter === 0) {
-          this.setState({error: this.state.error + 1})
-        }*/
-
-        if (this.state.place_letter === null) {
-          this.test = <Text style={[styles.titre]}>{myWord}</Text>
-      } else {
-        this.test = <Text style={[styles.titre]}>{myWord2}</Text>
-      }
-
-        /*for (let i = 0; i < this.state.mot.length;i++) {
+        for (let i = 0; i < this.state.mot.length; i++) {
           myWord.push(
-            
-            <Text style={[styles.titre]} key={i}> {this.state.avancement[this.state.place_letter]} </Text>
-            // <Text style={[styles.titre]} key={i}> _ </Text>
-            //<Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
+            // <Text style={[styles.titre]} key={i}>_</Text>
+            <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
           );
-        }*/
-      if(this.state.place_letter !== null) {
-        for (let o = 0; o < this.state.mot.length;o++) {
-          myWord2.push(
-            <Text style={[styles.titre]} key={this.state.place_letter}> {this.state.avancement[this.state.place_letter]} </Text>
-          )
         }
-      }else {
-        for (let i = 0; i < this.state.mot.length;i++) {
-          myWord.push(
-          <Text style={[styles.titre]} key={i}> _ </Text>
-          )
-        }
-      }
 
         return (
             <View style={styles.container}>
@@ -124,7 +91,8 @@ class Jeu extends React.Component {
               {this.pendu}
               {this.lost}
               {this.win}
-              {this.test}
+              <Text>{this.state.num}</Text>
+               <Text style={[styles.titre]}>{myWord}</Text>
                <View  style={styles.clavier}>
                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
                <Text> </Text>
