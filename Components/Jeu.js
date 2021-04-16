@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button, Image } from 'react-native';
 
 class Jeu extends React.Component {
-      constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
             avancement: [],
@@ -36,7 +36,7 @@ class Jeu extends React.Component {
             disabledY: false,
             disabledZ: false,
         };
-       }
+    }
 
     _test(value) {
         console.log(this.state.avancement)
@@ -52,53 +52,51 @@ class Jeu extends React.Component {
     }
 
     render() {
-      console.log(this.state.error)
-      if (Number.isInteger(this.state.num)) {
+        console.log(this.state.error)
+        if (Number.isInteger(this.state.num)) {
         this.num = <Text>True</Text>
-      }
+        }
         let myWord = [];
         if (this.state.error === 0) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
         } else if (this.state.error === 2) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang2.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang2.png')}/>
         } else if (this.state.error === 3) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang3.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang3.png')}/>
         } else if (this.state.error === 4) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang4.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang4.png')}/>
         } else if (this.state.error === 5) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
         } else if (this.state.error === 6) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
         } else if (this.state.error === 7) {
-          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
         }
         if (this.state.error === 7) {
-          this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
+            this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
         }
 
         for (let i = 0; i < this.state.mot.length; i++) {
-          myWord.push(
+            myWord.push(
             // <Text style={[styles.titre]} key={i}>_</Text>
-            <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
-          );
+                <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
+            );
         }
 
         return (
             <View style={styles.container}>
-              <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-              {this.pendu}
-              {this.lost}
-              {this.win}
-              <Text>{this.state.num}</Text>
-               <Text style={[styles.titre]}>{myWord}</Text>
-               <View  style={styles.clavier}>
-               <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
-               <Text> </Text>
-               <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
-               <Text> </Text>
-               <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
+                <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
+                {this.pendu}
+                <Text>{this.state.num}</Text>
+                {this.renderWord()}
+                <View  style={styles.clavier}>
+                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
+                <Text> </Text>
+                <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
+                <Text> </Text>
+                <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
                <Text> </Text>
                <Button onPress={() => this._test('D')} disabled={this.state.disabledD} value="D" title="D"/>
                <Text> </Text>
@@ -148,8 +146,21 @@ class Jeu extends React.Component {
                </View>
                  </ImageBackground>
             </View>
-            );
-        }
+        );
+    }
+    renderWord(){
+        return(
+            <View style={styles.word}>
+                {this.state.mot.split('').map((lettre,index)=>{
+                    if(!this.state.avancement.includes(lettre)){
+                        return (<View style={styles.wordontainer} key={index}><Text style={styles.wordItem}>_</Text></View>)
+                    }else{
+                        return(<View style={styles.wordContainer} key={index}><Text style={styles.wordItem}>{lettre}</Text></View>)
+                    }
+                })}
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -158,6 +169,27 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    wordContainer: {
+        flex:0,
+        padding:5,
+        margin:2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    wordItem: {
+        width:20,
+        fontSize:20,
+        borderBottomWidth:1,
+        borderBottomColor:"black"
+    },
+    word: {
+        flex: 1,
+        flexDirection:"row",
+        alignItems: 'center',
+        alignSelf:"auto",
+        justifyContent: 'center',
+        flexWrap:"wrap"
     },
     clavier:{
       padding: 10,
