@@ -42,7 +42,6 @@ class Jeu extends React.Component {
         console.log(this.state.avancement)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
-        this.setState({error: this.state.error + 1})
         var str = this.props.navigation.state.params.mot
         var n = str.search(value);
         this.setState({num: n})
@@ -55,6 +54,9 @@ class Jeu extends React.Component {
         console.log(this.state.error)
         if (Number.isInteger(this.state.num)) {
         this.num = <Text>True</Text>
+        }
+        if(this.state.avancement.includes(value)){
+          this.setState({error: this.state.error + 1})
         }
         let myWord = [];
         if (this.state.error === 0) {
@@ -84,19 +86,21 @@ class Jeu extends React.Component {
                 <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
             );
         }
-
+        
+        
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
                 {this.pendu}
-                <Text>{this.state.num}</Text>
+                {this.win}  
+                <Text style={[styles.titre]}></Text>
                 {this.renderWord()}
                 <View  style={styles.clavier}>
-                <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
-                <Text> </Text>
-                <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
-                <Text> </Text>
-                <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
+               <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
+               <Text> </Text>
+               <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
+               <Text> </Text>
+               <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
                <Text> </Text>
                <Button onPress={() => this._test('D')} disabled={this.state.disabledD} value="D" title="D"/>
                <Text> </Text>
@@ -148,6 +152,7 @@ class Jeu extends React.Component {
             </View>
         );
     }
+    
     renderWord(){
         return(
             <View style={styles.word}>
@@ -158,10 +163,11 @@ class Jeu extends React.Component {
                         return(<View style={styles.wordContainer} key={index}><Text style={styles.wordItem}>{lettre}</Text></View>)
                     }
                 })}
-            </View>
+            </View> 
         )
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
