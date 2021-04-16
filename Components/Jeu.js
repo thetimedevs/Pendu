@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground, Button, Image } from 'react-native';
 
 class Jeu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            avancement: [],
-            num: null,
+            usedLetters: [],
             error: 0,
             mot: this.props.navigation.state.params.mot,
             disabledA: false,
@@ -38,27 +37,16 @@ class Jeu extends React.Component {
         };
     }
 
-    _test(value) {
-        console.log(this.state.avancement)
+    _input(value) {
+        console.log(this.state.usedLetters)
         let toDisable = 'disabled' + value.toString()
         this.setState({[toDisable] : true })
-        var str = this.props.navigation.state.params.mot
-        var n = str.search(value);
-        this.setState({num: n})
-        let newAvancement = this.state.avancement
-        newAvancement.push(value)
-        this.setState({avancement: newAvancement})
+        let newList = this.state.usedLetters
+        newList.push(value)
+        this.setState({usedLetters: newList})
     }
 
     render() {
-        console.log(this.state.error)
-        if (Number.isInteger(this.state.num)) {
-        this.num = <Text>True</Text>
-        }
-        if(this.state.avancement.includes(value)){
-          this.setState({error: this.state.error + 1})
-        }
-        let myWord = [];
         if (this.state.error === 0) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
@@ -73,97 +61,82 @@ class Jeu extends React.Component {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
         } else if (this.state.error === 6) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
-        } else if (this.state.error === 7) {
-            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
-        }
-        if (this.state.error === 7) {
-            this.lost = <Text style={[styles.titre]}>Vous avez perdu !</Text>
         }
 
-        for (let i = 0; i < this.state.mot.length; i++) {
-            myWord.push(
-            // <Text style={[styles.titre]} key={i}>_</Text>
-                <Text style={[styles.titre]} key={i}> {this.state.mot[i]} </Text>
-            );
-        }
-        
-        
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
                 {this.pendu}
-                {this.win}  
-                <Text style={[styles.titre]}></Text>
                 {this.renderWord()}
                 <View  style={styles.clavier}>
-               <Button onPress={() => this._test('A')} disabled={this.state.disabledA} value="A" title="A"/>
+               <Button onPress={() => this._input('A')} disabled={this.state.disabledA} value="A" title="A"/>
                <Text> </Text>
-               <Button onPress={() => this._test('B')} disabled={this.state.disabledB} value="B" title="B"/>
+               <Button onPress={() => this._input('B')} disabled={this.state.disabledB} value="B" title="B"/>
                <Text> </Text>
-               <Button onPress={() => this._test('C')} disabled={this.state.disabledC} value="C" title="C"/>
+               <Button onPress={() => this._input('C')} disabled={this.state.disabledC} value="C" title="C"/>
                <Text> </Text>
-               <Button onPress={() => this._test('D')} disabled={this.state.disabledD} value="D" title="D"/>
+               <Button onPress={() => this._input('D')} disabled={this.state.disabledD} value="D" title="D"/>
                <Text> </Text>
-               <Button onPress={() => this._test('E')} disabled={this.state.disabledE} value="E" title="E"/>
+               <Button onPress={() => this._input('E')} disabled={this.state.disabledE} value="E" title="E"/>
                <Text> </Text>
-               <Button onPress={() => this._test('F')} disabled={this.state.disabledF} value="F" title="F"/>
+               <Button onPress={() => this._input('F')} disabled={this.state.disabledF} value="F" title="F"/>
                <Text> </Text>
-               <Button onPress={() => this._test('G')} disabled={this.state.disabledG} value="G" title="G"/>
+               <Button onPress={() => this._input('G')} disabled={this.state.disabledG} value="G" title="G"/>
                <Text> </Text>
-               <Button onPress={() => this._test('H')} disabled={this.state.disabledH} value="H" title="H"/>
+               <Button onPress={() => this._input('H')} disabled={this.state.disabledH} value="H" title="H"/>
                <Text> </Text>
-               <Button onPress={() => this._test('I')} disabled={this.state.disabledI} value="I" title="I"/>
+               <Button onPress={() => this._input('I')} disabled={this.state.disabledI} value="I" title="I"/>
                <Text> </Text>
-               <Button onPress={() => this._test('J')} disabled={this.state.disabledJ} value="J" title="J"/>
+               <Button onPress={() => this._input('J')} disabled={this.state.disabledJ} value="J" title="J"/>
                <Text> </Text>
-               <Button onPress={() => this._test('K')} disabled={this.state.disabledK} value="K" title="K"/>
+               <Button onPress={() => this._input('K')} disabled={this.state.disabledK} value="K" title="K"/>
                <Text> </Text>
-               <Button onPress={() => this._test('L')} disabled={this.state.disabledL} value="L" title="L"/>
+               <Button onPress={() => this._input('L')} disabled={this.state.disabledL} value="L" title="L"/>
                <Text> </Text>
-               <Button onPress={() => this._test('M')} disabled={this.state.disabledM} value="M" title="M"/>
+               <Button onPress={() => this._input('M')} disabled={this.state.disabledM} value="M" title="M"/>
                <Text> </Text>
-               <Button onPress={() => this._test('N')} disabled={this.state.disabledN} value="N" title="N"/>
+               <Button onPress={() => this._input('N')} disabled={this.state.disabledN} value="N" title="N"/>
                <Text> </Text>
-               <Button onPress={() => this._test('O')} disabled={this.state.disabledO} value="O" title="O"/>
+               <Button onPress={() => this._input('O')} disabled={this.state.disabledO} value="O" title="O"/>
                <Text> </Text>
-               <Button onPress={() => this._test('P')} disabled={this.state.disabledP} value="P" title="P"/>
+               <Button onPress={() => this._input('P')} disabled={this.state.disabledP} value="P" title="P"/>
                <Text> </Text>
-               <Button onPress={() => this._test('Q')} disabled={this.state.disabledQ} value="Q" title="Q"/>
+               <Button onPress={() => this._input('Q')} disabled={this.state.disabledQ} value="Q" title="Q"/>
                <Text> </Text>
-               <Button onPress={() => this._test('R')} disabled={this.state.disabledR} value="R" title="R"/>
+               <Button onPress={() => this._input('R')} disabled={this.state.disabledR} value="R" title="R"/>
                <Text> </Text>
-               <Button onPress={() => this._test('S')} disabled={this.state.disabledS} value="S" title="S"/>
+               <Button onPress={() => this._input('S')} disabled={this.state.disabledS} value="S" title="S"/>
                <Text> </Text>
-               <Button onPress={() => this._test('T')} disabled={this.state.disabledT} value="T" title="T"/>
+               <Button onPress={() => this._input('T')} disabled={this.state.disabledT} value="T" title="T"/>
                <Text> </Text>
-               <Button onPress={() => this._test('U')} disabled={this.state.disabledU} value="U" title="U"/>
+               <Button onPress={() => this._input('U')} disabled={this.state.disabledU} value="U" title="U"/>
                <Text> </Text>
-               <Button onPress={() => this._test('V')} disabled={this.state.disabledV}  value="V" title="V"/>
+               <Button onPress={() => this._input('V')} disabled={this.state.disabledV}  value="V" title="V"/>
                <Text> </Text>
-               <Button onPress={() => this._test('W')} disabled={this.state.disabledW} value="W" title="W"/>
+               <Button onPress={() => this._input('W')} disabled={this.state.disabledW} value="W" title="W"/>
                <Text> </Text>
-               <Button onPress={() => this._test('X')} disabled={this.state.disabledX} value="X" title="X"/>
+               <Button onPress={() => this._input('X')} disabled={this.state.disabledX} value="X" title="X"/>
                <Text> </Text>
-               <Button onPress={() => this._test('Y')} disabled={this.state.disabledY} value="Y" title="Y"/>
+               <Button onPress={() => this._input('Y')} disabled={this.state.disabledY} value="Y" title="Y"/>
                <Text> </Text>
-               <Button onPress={() => this._test('Z')} disabled={this.state.disabledZ} value="Z" title="Z"/>
+               <Button onPress={() => this._input('Z')} disabled={this.state.disabledZ} value="Z" title="Z"/>
                </View>
                  </ImageBackground>
             </View>
         );
     }
-    
+
     renderWord(){
         return(
             <View style={styles.word}>
-                {this.state.mot.split('').map((lettre,index)=>{
-                    if(!this.state.avancement.includes(lettre)){
+                {this.state.mot.split('').map((letter,index)=>{
+                    if(!this.state.usedLetters.includes(letter)){
                         return (<View style={styles.wordontainer} key={index}><Text style={styles.wordItem}>_</Text></View>)
                     }else{
-                        return(<View style={styles.wordContainer} key={index}><Text style={styles.wordItem}>{lettre}</Text></View>)
+                        return(<View style={styles.wordContainer} key={index}><Text style={styles.wordItem}>{letter}</Text></View>)
                     }
                 })}
-            </View> 
+            </View>
         )
     }
 }
