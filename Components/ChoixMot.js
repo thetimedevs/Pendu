@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    TextInput: {
+        color: "#fff",
+    },
     titre: {
         fontSize: 25,
         alignItems: 'center',

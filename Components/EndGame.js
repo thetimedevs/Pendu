@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
 
-class InGame extends React.Component {
+class EndGame extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ class InGame extends React.Component {
   }
 
   render() {
-      if(this.state.status === "GAGNEZ"){
+      if(this.state.status === "GAGNE"){
           this.msg = 'BRAVO'
       } else if(this.state.status === "PERDU") {
         this.msg = 'DOMMAGE'
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InGame
+export default EndGame
