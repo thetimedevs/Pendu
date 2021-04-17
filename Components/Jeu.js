@@ -5,6 +5,7 @@ class Jeu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            data: 0,
             usedLetters: [],
             error: 0,
             mot: this.props.navigation.state.params.mot,
@@ -44,9 +45,24 @@ class Jeu extends React.Component {
         let newList = this.state.usedLetters
         newList.push(value)
         this.setState({usedLetters: newList})
+        if(!this.state.mot.split('').includes(value)) {
+          this.setState({error: this.state.error + 1})
+        }
+        if(this.state.error === 6) {
+          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "PERDU" })
+        }
+        if(this.state.mot.split('').includes(value)){
+          this.setState({data: this.state.data + 1})
+        }
+        if(this.state.data === this.state.taille_mot){
+          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
+        }
     }
 
     render() {
+        if(this.state.data === this.state.mot.length){
+          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
+        }
         if (this.state.error === 0) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {
@@ -61,6 +77,8 @@ class Jeu extends React.Component {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
         } else if (this.state.error === 6) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
+        } else if (this.state.error === 7) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
         }
 
         return (
@@ -121,7 +139,7 @@ class Jeu extends React.Component {
                <Text> </Text>
                <Button onPress={() => this._input('Z')} disabled={this.state.disabledZ} value="Z" title="Z"/>
                </View>
-                 </ImageBackground>
+                </ImageBackground>
             </View>
         );
     }
@@ -131,9 +149,9 @@ class Jeu extends React.Component {
             <View style={styles.word}>
                 {this.state.mot.split('').map((letter,index)=>{
                     if(!this.state.usedLetters.includes(letter)){
-                        return (<View style={styles.wordontainer} key={index}><Text style={styles.wordItem}>_</Text></View>)
+                        return (<View style={styles.wordContainer} key={index}><Text style={[styles.wordItem, styles.titre]}>_</Text></View>)
                     }else{
-                        return(<View style={styles.wordContainer} key={index}><Text style={styles.wordItem}>{letter}</Text></View>)
+                        return(<View style={styles.wordContainer} key={index}><Text style={[styles.wordItem, styles.titre]}>{letter}</Text></View>)
                     }
                 })}
             </View>
