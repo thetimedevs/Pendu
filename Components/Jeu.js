@@ -1,88 +1,161 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, ImageBackground, TouchableOpacity, TextInput, Button, Image } from 'react-native';
-
+import { StyleSheet, Text, View, Dimensions, ImageBackground, Button, Image } from 'react-native';
 
 class Jeu extends React.Component {
-
-      constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-         mot: this.props.navigation.state.params.mot
-         };
-       }
+            foundLetter: 0,
+            usedLetters: [],
+            error: 0,
+            mot: this.props.navigation.state.params.mot,
+            disabledA: false,
+            disabledB: false,
+            disabledC: false,
+            disabledD: false,
+            disabledE: false,
+            disabledF: false,
+            disabledG: false,
+            disabledH: false,
+            disabledI: false,
+            disabledJ: false,
+            disabledK: false,
+            disabledL: false,
+            disabledM: false,
+            disabledN: false,
+            disabledO: false,
+            disabledP: false,
+            disabledQ: false,
+            disabledR: false,
+            disabledS: false,
+            disabledT: false,
+            disabledU: false,
+            disabledV: false,
+            disabledW: false,
+            disabledX: false,
+            disabledY: false,
+            disabledZ: false,
+        };
+    }
+
+    _input(value) {
+        console.log(this.state.usedLetters)
+        let toDisable = 'disabled' + value.toString()
+        this.setState({[toDisable] : true })
+        let newList = this.state.usedLetters
+        newList.push(value)
+        this.setState({usedLetters: newList})
+        if(!this.state.mot.split('').includes(value)) {
+          this.setState({error: this.state.error + 1})
+        }
+        if(this.state.error === 6) {
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "PERDU" })
+        }
+        if(this.state.mot.split('').includes(value)){
+          this.setState({data: this.state.foundLetter + 1})
+        }
+        if(this.state.foundLetter === this.state.mot.length){
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "GAGNE" })
+        }
+    }
 
     render() {
-        let myWord = [];
-        let nb = this.state.mot.length
-for (let i = 0; i < nb; i++) {
-  myWord.push(
-    <Text style={[styles.titre]} key={i}> _ </Text>
-  );
-}
+        if (this.state.error === 0) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
+        } else if (this.state.error === 1) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang1.png')}/>
+        } else if (this.state.error === 2) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang2.png')}/>
+        } else if (this.state.error === 3) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang3.png')}/>
+        } else if (this.state.error === 4) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang4.png')}/>
+        } else if (this.state.error === 5) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang5.png')}/>
+        } else if (this.state.error === 6) {
+            this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang6.png')}/>
+        } else if (this.state.error === 7) {
+          this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang7.png')}/>
+        }
 
         return (
             <View style={styles.container}>
-                 <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
-               <Image style={styles.pendu_img} source={require("../img_pendu/hang0.png")}/>
-               <Text style={[styles.titre]}>{myWord} {'\n\n'}</Text>
-               <View  style={styles.clavier}>
-               <Button value="A" title="A"/>
-                <Text> </Text>
-               <Button value="B" title="B"/>
+                <ImageBackground source={require('../assets/fond_maison.png')} style={styles.image} blurRadius={2}>
+                {this.pendu}
+                {this.renderWord()}
+                <View  style={styles.clavier}>
+               <Button onPress={() => this._input('A')} disabled={this.state.disabledA} value="A" title="A"/>
                <Text> </Text>
-               <Button value="C" title="C"/>
+               <Button onPress={() => this._input('B')} disabled={this.state.disabledB} value="B" title="B"/>
                <Text> </Text>
-               <Button value="D" title="D"/>
+               <Button onPress={() => this._input('C')} disabled={this.state.disabledC} value="C" title="C"/>
                <Text> </Text>
-               <Button value="E" title="E"/>
+               <Button onPress={() => this._input('D')} disabled={this.state.disabledD} value="D" title="D"/>
                <Text> </Text>
-               <Button value="F" title="F"/>
+               <Button onPress={() => this._input('E')} disabled={this.state.disabledE} value="E" title="E"/>
                <Text> </Text>
-               <Button value="G" title="G"/>
+               <Button onPress={() => this._input('F')} disabled={this.state.disabledF} value="F" title="F"/>
                <Text> </Text>
-               <Button value="H" title="H"/>
+               <Button onPress={() => this._input('G')} disabled={this.state.disabledG} value="G" title="G"/>
                <Text> </Text>
-               <Button value="I" title="I"/>
+               <Button onPress={() => this._input('H')} disabled={this.state.disabledH} value="H" title="H"/>
                <Text> </Text>
-               <Button value="J" title="J"/>
+               <Button onPress={() => this._input('I')} disabled={this.state.disabledI} value="I" title="I"/>
                <Text> </Text>
-               <Button value="K" title="K"/>
+               <Button onPress={() => this._input('J')} disabled={this.state.disabledJ} value="J" title="J"/>
                <Text> </Text>
-               <Button value="L" title="L"/>
+               <Button onPress={() => this._input('K')} disabled={this.state.disabledK} value="K" title="K"/>
                <Text> </Text>
-               <Button value="M" title="M"/>
+               <Button onPress={() => this._input('L')} disabled={this.state.disabledL} value="L" title="L"/>
                <Text> </Text>
-               <Button value="N" title="N"/>
+               <Button onPress={() => this._input('M')} disabled={this.state.disabledM} value="M" title="M"/>
                <Text> </Text>
-               <Button value="O" title="O"/>
+               <Button onPress={() => this._input('N')} disabled={this.state.disabledN} value="N" title="N"/>
                <Text> </Text>
-               <Button value="P" title="P"/>
+               <Button onPress={() => this._input('O')} disabled={this.state.disabledO} value="O" title="O"/>
                <Text> </Text>
-               <Button value="Q" title="Q"/>
+               <Button onPress={() => this._input('P')} disabled={this.state.disabledP} value="P" title="P"/>
                <Text> </Text>
-               <Button value="R" title="R"/>
+               <Button onPress={() => this._input('Q')} disabled={this.state.disabledQ} value="Q" title="Q"/>
                <Text> </Text>
-               <Button value="S" title="S"/>
+               <Button onPress={() => this._input('R')} disabled={this.state.disabledR} value="R" title="R"/>
                <Text> </Text>
-               <Button value="T" title="T"/>
+               <Button onPress={() => this._input('S')} disabled={this.state.disabledS} value="S" title="S"/>
                <Text> </Text>
-               <Button value="U" title="U"/>
+               <Button onPress={() => this._input('T')} disabled={this.state.disabledT} value="T" title="T"/>
                <Text> </Text>
-               <Button value="V" title="V"/>
+               <Button onPress={() => this._input('U')} disabled={this.state.disabledU} value="U" title="U"/>
                <Text> </Text>
-               <Button value="W" title="W"/>
+               <Button onPress={() => this._input('V')} disabled={this.state.disabledV}  value="V" title="V"/>
                <Text> </Text>
-               <Button value="X" title="X"/>
+               <Button onPress={() => this._input('W')} disabled={this.state.disabledW} value="W" title="W"/>
                <Text> </Text>
-               <Button value="Y" title="Y"/>
+               <Button onPress={() => this._input('X')} disabled={this.state.disabledX} value="X" title="X"/>
                <Text> </Text>
-               <Button value="Z" title="Z"/>
+               <Button onPress={() => this._input('Y')} disabled={this.state.disabledY} value="Y" title="Y"/>
+               <Text> </Text>
+               <Button onPress={() => this._input('Z')} disabled={this.state.disabledZ} value="Z" title="Z"/>
                </View>
-                 </ImageBackground>
+                </ImageBackground>
             </View>
-            );
-        }
+        );
+    }
+
+    renderWord(){
+        return(
+            <View style={styles.word}>
+                {this.state.mot.split('').map((letter,index)=>{
+                    if(!this.state.usedLetters.includes(letter)){
+                        return (<View style={styles.wordContainer} key={index}><Text style={[styles.wordItem, styles.titre]}>_</Text></View>)
+                    }else{
+                        return(<View style={styles.wordContainer} key={index}><Text style={[styles.wordItem, styles.titre]}>{letter}</Text></View>)
+                    }
+                })}
+            </View>
+        )
+    }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -91,15 +164,34 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    wordContainer: {
+        flex:0,
+        padding:5,
+        margin:2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    wordItem: {
+        width:20,
+        fontSize:20,
+        borderBottomWidth:1,
+        borderBottomColor:"black"
+    },
+    word: {
+        flex: 1,
+        flexDirection:"row",
+        alignItems: 'center',
+        alignSelf:"auto",
+        justifyContent: 'center',
+        flexWrap:"wrap"
+    },
     clavier:{
-      flex: 1,
       padding: 10,
       position: "absolute",
       bottom: 10,
       marginVertical: 8,
       flexDirection: "row",
       flexWrap: "wrap",
-      alignItems:'center',
       justifyContent:'center',
     },
     titre: {
