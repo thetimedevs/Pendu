@@ -33,7 +33,7 @@ class EndGame extends React.Component {
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
 
     {/* Button 1 Joueur */}
-    <Text style={[styles.text]}>Vous avez {this.state.status} la patie !!</Text>
+    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !!</Text>
 
     <Text style={[styles.text]}>Le mot était : {this.state.mot}</Text>
 

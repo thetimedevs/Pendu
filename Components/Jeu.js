@@ -54,7 +54,7 @@ class Jeu extends React.Component {
         if(this.state.mot.split('').includes(value)){
           this.setState({data: this.state.data + 1})
         }
-        if(this.state.data === this.state.mot.length-1){
+        if(this.state.data === this.state.mot.length){
           this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "GAGNE" })
         }
     }
