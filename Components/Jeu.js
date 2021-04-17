@@ -5,7 +5,7 @@ class Jeu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: 0,
+            foundLetter: 0,
             usedLetters: [],
             error: 0,
             mot: this.props.navigation.state.params.mot,
@@ -49,20 +49,17 @@ class Jeu extends React.Component {
           this.setState({error: this.state.error + 1})
         }
         if(this.state.error === 6) {
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "PERDU" })
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "PERDU" })
         }
         if(this.state.mot.split('').includes(value)){
-          this.setState({data: this.state.data + 1})
+          this.setState({data: this.state.foundLetter + 1})
         }
-        if(this.state.data === this.state.taille_mot){
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
+        if(this.state.foundLetter === this.state.mot.length){
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "GAGNE" })
         }
     }
 
     render() {
-        if(this.state.data === this.state.mot.length){
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
-        }
         if (this.state.error === 0) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {

@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Menu from '../Components/Menu'
 import Jeu from '../Components/Jeu'
 import ChoixMot from "../Components/ChoixMot";
-import InGame from "../Components/InGame";
+import EndGame from "../Components/InGame";
 
 const MainStackNavigator = createStackNavigator({
     Menu: {
@@ -13,16 +13,16 @@ const MainStackNavigator = createStackNavigator({
             headerShown: false
         },
     },
-    InGame: {
-        screen: InGame,
+    EndGame: {
+        screen: EndGame,
         navigationOptions: {
-            headerShown: false, 
+            headerShown: false,
         },
     },
     Jeu: {
         screen: Jeu,
         navigationOptions: {
-            headerShown: false, 
+            headerShown: false,
         },
     },
     ChoixMot: {

@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
 
-class InGame extends React.Component {
+class EndGame extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,18 +11,17 @@ class InGame extends React.Component {
         };
     }
 
-  _rej() {
+  _replay() {
     console.log('1P')
     this.props.navigation.navigate('Jeu', { mot: 'JEUX' })
   }
 
   _quit() {
-    console.log("2P")
     this.props.navigation.navigate('Menu')
   }
 
   render() {
-      if(this.state.status === "GAGNEZ"){
+      if(this.state.status === "GAGNE"){
           this.msg = 'BRAVO'
       } else if(this.state.status === "PERDU") {
         this.msg = 'DOMMAGE'
@@ -33,13 +32,13 @@ class InGame extends React.Component {
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
 
     {/* Button 1 Joueur */}
-    <Text style={[styles.text]}>Vous avez {this.state.status} la patie !!</Text>
+    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !!</Text>
 
     <Text style={[styles.text]}>Le mot était : {this.state.mot}</Text>
 
     {/* Button Option */}
       <View style={styles.view_button}>
-    <TouchableOpacity onPress={() => this._rej()} disabled={false} style={styles.appButtonContainer}>
+    <TouchableOpacity onPress={() => this._replay()} style={styles.appButtonContainer}>
       <Text style={styles.appButtonText}>Rejouer</Text>
     </TouchableOpacity>
     <Text> </Text>
@@ -113,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InGame
+export default EndGame
