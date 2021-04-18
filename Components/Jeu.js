@@ -5,7 +5,7 @@ class Jeu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: 0,
+            foundLetters: 0,
             usedLetters: [],
             error: 0,
             mot: this.props.navigation.state.params.mot,
@@ -39,30 +39,44 @@ class Jeu extends React.Component {
     }
 
     _input(value) {
-        console.log(this.state.usedLetters)
+        {/* Récupération des données du state */}
+        let mot = this.state.mot
+        let error = this.state.error
+        let foundLetters = this.state.foundLetters
         let toDisable = 'disabled' + value.toString()
-        this.setState({[toDisable] : true })
-        let newList = this.state.usedLetters
-        newList.push(value)
-        this.setState({usedLetters: newList})
-        if(!this.state.mot.split('').includes(value)) {
-          this.setState({error: this.state.error + 1})
+        let usedLetters = this.state.usedLetters
+        usedLetters.push(value)
+
+        {/* Si le mot contiend la valeur, on verifie pour chaque lettre du mot si la valeur est présente
+         Pour chaque présence on imcrémente foundLetters
+         Sinon, on incrémente error*/}
+        if(mot.split('').includes(value)){
+          mot.split('').map((letter, index) => {
+            if (letter === value) {
+              foundLetters++
+            }
+          })
+        } else {
+          error++
         }
-        if(this.state.error === 6) {
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "PERDU" })
+        {/* Navigations Reussite / Echec */}
+        if(error === 7) {
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "PERDU" })
         }
-        if(this.state.mot.split('').includes(value)){
-          this.setState({data: this.state.data + 1})
+        if(foundLetters === mot.length){
+          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "GAGNE" })
         }
-        if(this.state.data === this.state.taille_mot){
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
-        }
+        {/* On set le State d'un coup avec totues les valeurs modifiées si le jeu n'est pas gagné/perdu */}
+        this.setState({
+          [toDisable] : true,
+          mot: mot,
+          error: error,
+          foundLetters: foundLetters,
+          usedLetters: usedLetters
+        })
     }
 
     render() {
-        if(this.state.data === this.state.mot.length){
-          this.props.navigation.navigate('InGame', { mot: this.state.mot, status: "GAGNEZ" })
-        }
         if (this.state.error === 0) {
             this.pendu = <Image style={styles.pendu_img} source={require('../img_pendu/hang0.png')}/>
         } else if (this.state.error === 1) {

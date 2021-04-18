@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
 
-class InGame extends React.Component {
+class EndGame extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ class InGame extends React.Component {
   }
 
   render() {
-      if(this.state.status === "GAGNEZ"){
+      if(this.state.status === "GAGNE"){
           this.msg = 'BRAVO'
       } else if(this.state.status === "PERDU") {
         this.msg = 'DOMMAGE'
@@ -33,7 +33,7 @@ class InGame extends React.Component {
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
 
     {/* Button 1 Joueur */}
-    <Text style={[styles.text]}>Vous avez {this.state.status} la patie !!</Text>
+    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !!</Text>
 
     <Text style={[styles.text]}>Le mot était : {this.state.mot}</Text>
 
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InGame
+export default EndGame
