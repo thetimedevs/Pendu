@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity, Linking } from 'react-native';
 
 class EndGame extends React.Component {
     constructor(props) {
@@ -33,9 +33,9 @@ class EndGame extends React.Component {
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
 
     {/* Button 1 Joueur */}
-    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !!</Text>
+    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !! {'\n'}</Text>
 
-    <Text style={[styles.text]}>Le mot était : {this.state.mot}</Text>
+    <Text style={[styles.text]}>Le mot était : <Text style={styles.link} onPress={() => Linking.openURL(`https://www.larousse.fr/dictionnaires/francais/${this.state.mot}`)}>{this.state.mot}</Text></Text>
 
     {/* Button Option */}
       <View style={styles.view_button}>
@@ -60,6 +60,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  link: {
+    color: "#0087FF",
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
   view_button: {
     padding: 30,
