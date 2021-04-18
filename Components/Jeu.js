@@ -60,7 +60,7 @@ class Jeu extends React.Component {
           error++
         }
         {/* Navigations Reussite / Echec */}
-        if(error === 6) {
+        if(error === 7) {
           this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "PERDU" })
         }
         if(foundLetters === mot.length){
