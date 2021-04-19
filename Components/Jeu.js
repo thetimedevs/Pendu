@@ -223,11 +223,11 @@ const styles = StyleSheet.create({
       color: 'white',
       },
     pendu_img: {
-      opacity:0.8,
       borderRadius: 5,
       position: "absolute",
       top: 10,
-      left: 30
+      left: 30,
+      tintColor: 'white'
       },
     image: {
       flex: 1,
