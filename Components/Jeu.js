@@ -184,13 +184,15 @@ const styles = StyleSheet.create({
     wordContainer: {
         flex:0,
         padding:5,
-        margin:2,
+        margin:1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexWrap: "wrap",
     },
     wordItem: {
         width:20,
         fontSize:20,
+        flexWrap: "wrap",
         borderBottomWidth:1,
         borderBottomColor:"black"
     },
