@@ -7,12 +7,10 @@ import words from "../Helpers/words";
 class Menu extends React.Component {
 
   _onePlayer() {
-    console.log('1P')
     this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)] })
   }
 
   _twoPlayers() {
-    console.log("2P")
     this.props.navigation.navigate('ChoixMot')
   }
 

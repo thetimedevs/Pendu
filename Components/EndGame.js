@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
+import words from "../Helpers/words";
 
 class EndGame extends React.Component {
     constructor(props) {
@@ -12,12 +13,10 @@ class EndGame extends React.Component {
     }
 
   _rej() {
-    console.log('1P')
-    this.props.navigation.navigate('Jeu', { mot: 'JEUX' })
+    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)] })
   }
 
   _quit() {
-    console.log("2P")
     this.props.navigation.navigate('Menu')
   }
 
