@@ -34,8 +34,8 @@ class Jeu extends React.Component {
             disabledW: false,
             disabledX: false,
             disabledY: false,
-            disabledZ: false,
-        };
+            disabledZ: false
+        }
     }
 
     _input(value) {
@@ -61,19 +61,87 @@ class Jeu extends React.Component {
         }
         {/* Navigations Reussite / Echec */}
         if(error === 7) {
-          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "PERDU" })
+            let mot = this.state.mot
+            this.setState({
+                foundLetters: 0,
+                usedLetters: [],
+                error: 0,
+                mot: this.props.navigation.state.params.mot,
+                disabledA: false,
+                disabledB: false,
+                disabledC: false,
+                disabledD: false,
+                disabledE: false,
+                disabledF: false,
+                disabledG: false,
+                disabledH: false,
+                disabledI: false,
+                disabledJ: false,
+                disabledK: false,
+                disabledL: false,
+                disabledM: false,
+                disabledN: false,
+                disabledO: false,
+                disabledP: false,
+                disabledQ: false,
+                disabledR: false,
+                disabledS: false,
+                disabledT: false,
+                disabledU: false,
+                disabledV: false,
+                disabledW: false,
+                disabledX: false,
+                disabledY: false,
+                disabledZ: false
+            })
+          this.props.navigation.navigate('EndGame', { mot: mot, status: "PERDU" })
         }
         if(foundLetters === mot.length){
-          this.props.navigation.navigate('EndGame', { mot: this.state.mot, status: "GAGNE" })
+            let mot = this.state.mot
+            this.setState({
+                foundLetters: 0,
+                usedLetters: [],
+                error: 0,
+                mot: this.props.navigation.state.params.mot,
+                disabledA: false,
+                disabledB: false,
+                disabledC: false,
+                disabledD: false,
+                disabledE: false,
+                disabledF: false,
+                disabledG: false,
+                disabledH: false,
+                disabledI: false,
+                disabledJ: false,
+                disabledK: false,
+                disabledL: false,
+                disabledM: false,
+                disabledN: false,
+                disabledO: false,
+                disabledP: false,
+                disabledQ: false,
+                disabledR: false,
+                disabledS: false,
+                disabledT: false,
+                disabledU: false,
+                disabledV: false,
+                disabledW: false,
+                disabledX: false,
+                disabledY: false,
+                disabledZ: false
+            })
+            this.props.navigation.navigate('EndGame', { mot: mot, status: "GAGNE" })
+        } else {
+            {/* On set le State d'un coup avec totues les valeurs modifiées si le jeu n'est pas gagné/perdu */
+            }
+            this.setState({
+                [toDisable]: true,
+                mot: mot,
+                error: error,
+                foundLetters: foundLetters,
+                usedLetters: usedLetters
+            })
         }
-        {/* On set le State d'un coup avec totues les valeurs modifiées si le jeu n'est pas gagné/perdu */}
-        this.setState({
-          [toDisable] : true,
-          mot: mot,
-          error: error,
-          foundLetters: foundLetters,
-          usedLetters: usedLetters
-        })
     }
 
     render() {
