@@ -22,19 +22,23 @@ class EndGame extends React.Component {
 
   render() {
       if(this.state.status === "GAGNE"){
+          this.img_lost = <Image style={styles.pendu_img} source={{uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/docomo/205/thumbs-up-sign_1f44d.png'}}/>
           this.msg = 'BRAVO'
       } else if(this.state.status === "PERDU") {
         this.msg = 'DOMMAGE'
+        this.img_lost = <Image style={styles.pendu_img} source={{uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/joypixels/275/crying-face_1f622.png'}}/>
       }
    return (
     <View style={[styles.container]}>
       <ImageBackground source={require('../assets/fond.png')} style={styles.image} blurRadius={2}>
+      <View style={[styles.text]}>{this.img_lost}</View>
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
+        
 
     {/* Button 1 Joueur */}
-    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !!</Text>
+    <Text style={[styles.text]}>Vous avez {this.state.status} la partie !! {'\n'}</Text>
 
-    <Text style={[styles.text]}>Le mot était : {this.state.mot}</Text>
+    <Text style={[styles.text]}>Le mot était : <Text style={styles.link} onPress={() => Linking.openURL(`https://www.larousse.fr/dictionnaires/francais/${this.state.mot}`)}>{this.state.mot}</Text></Text>
 
     {/* Button Option */}
       <View style={styles.view_button}>
@@ -53,12 +57,31 @@ class EndGame extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  pendu_img: {
+    width: 150,
+    height: 150,
+    resizeMode: "contain",
+    alignItems: 'center',
+    justifyContent:'center',
+  },
+  link: {
+    color: "#0087FF",
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+  },
+  msg_gagne: {
+    fontSize: 60,
+    padding: 30,
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    position: 'relative',
   },
   view_button: {
     padding: 30,

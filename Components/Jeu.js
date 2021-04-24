@@ -184,13 +184,15 @@ const styles = StyleSheet.create({
     wordContainer: {
         flex:0,
         padding:5,
-        margin:2,
+        margin:1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexWrap: "wrap",
     },
     wordItem: {
         width:20,
         fontSize:20,
+        flexWrap: "wrap",
         borderBottomWidth:1,
         borderBottomColor:"black"
     },
@@ -223,11 +225,11 @@ const styles = StyleSheet.create({
       color: 'white',
       },
     pendu_img: {
-      opacity:0.8,
       borderRadius: 5,
       position: "absolute",
       top: 10,
-      left: 30
+      left: 30,
+      tintColor: 'white'
       },
     image: {
       flex: 1,
