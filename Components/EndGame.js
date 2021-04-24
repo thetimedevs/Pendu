@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity, Image, Linking } from 'react-native';
 import words from "../Helpers/words";
 
 class EndGame extends React.Component {
