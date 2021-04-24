@@ -1,17 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions,  TouchableOpacity } from 'react-native';
+import words from "../Helpers/words";
 
 
 class Menu extends React.Component {
 
   _onePlayer() {
-    console.log('1P')
-    this.props.navigation.navigate('Jeu', { mot: 'ELEPHANT' })
+    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)] })
   }
 
   _twoPlayers() {
-    console.log("2P")
     this.props.navigation.navigate('ChoixMot')
   }
 
