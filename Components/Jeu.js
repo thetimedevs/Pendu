@@ -61,6 +61,7 @@ class Jeu extends React.Component {
         }
         {/* Navigations Reussite / Echec */}
         if(error === 7) {
+            console.log('Perdu, on efface le state')
             let mot = this.state.mot
             this.setState({
                 foundLetters: 0,
@@ -97,6 +98,7 @@ class Jeu extends React.Component {
           this.props.navigation.navigate('EndGame', { mot: mot, status: "PERDU" })
         }
         if(foundLetters === mot.length){
+            console.log('Gagné, on efface le state')
             let mot = this.state.mot
             this.setState({
                 foundLetters: 0,
@@ -132,6 +134,7 @@ class Jeu extends React.Component {
             })
             this.props.navigation.navigate('EndGame', { mot: mot, status: "GAGNE" })
         } else {
+            console.log('Ni gagné ni perdu, on met à jour le state')
             {/* On set le State d'un coup avec totues les valeurs modifiées si le jeu n'est pas gagné/perdu */
             }
             this.setState({
