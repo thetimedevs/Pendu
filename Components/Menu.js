@@ -7,11 +7,11 @@ import words from "../Helpers/words";
 class Menu extends React.Component {
 
   _onePlayer() {
-    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)] })
+    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)], joueur: "1" })
   }
 
   _twoPlayers() {
-    this.props.navigation.navigate('ChoixMot')
+    this.props.navigation.navigate('ChoixMot', {joueur: "2"})
   }
 
   render() {
@@ -30,7 +30,7 @@ class Menu extends React.Component {
     {/* Button 2 Joueurs */}
       <Text>{'\n'}</Text>
     <TouchableOpacity
-        style={styles.appButtonContainer}
+        style={styles.appButtonContainer_red}
         onPress={() => this._twoPlayers()}>
       <Text style={styles.appButtonText}>2 Joueurs</Text>
     </TouchableOpacity>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12
   },
-  appButtonContainer_option: {
+  appButtonContainer_red: {
     elevation: 8,
     backgroundColor: "#CA2856",
     borderRadius: 10,

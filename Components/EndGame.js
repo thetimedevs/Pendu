@@ -9,11 +9,16 @@ class EndGame extends React.Component {
         this.state = {
             status: this.props.navigation.state.params.status,
             mot: this.props.navigation.state.params.mot,
+            joueur: this.props.navigation.state.params.joueur
         };
     }
 
   _rej() {
-    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)] })
+    if(this.state.joueur === "1"){
+    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)], joueur: this.state.joueur })
+    }else if(this.state.joueur === "2"){
+      this.props.navigation.navigate('ChoixMot', {joueur: this.state.joueur, mot: ''})
+    }
   }
 
   _quit() {

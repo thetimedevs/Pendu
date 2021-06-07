@@ -8,6 +8,7 @@ class Jeu extends React.Component {
             foundLetters: 0,
             usedLetters: [],
             error: 0,
+            joueur: this.props.navigation.state.params.joueur,
             mot: this.props.navigation.state.params.mot,
             disabledA: false,
             disabledB: false,
@@ -67,6 +68,7 @@ class Jeu extends React.Component {
                 usedLetters: [],
                 error: 0,
                 mot: this.props.navigation.state.params.mot,
+                joueur: this.props.navigation.state.params.joueur,
                 disabledA: false,
                 disabledB: false,
                 disabledC: false,
@@ -94,7 +96,7 @@ class Jeu extends React.Component {
                 disabledY: false,
                 disabledZ: false
             })
-          this.props.navigation.navigate('EndGame', { mot: mot, status: "PERDU" })
+          this.props.navigation.navigate('EndGame', { mot: mot, status: "PERDU", joueur: this.state.joueur })
         }
         else if(foundLetters === mot.length){
             let mot = this.state.mot
@@ -103,6 +105,7 @@ class Jeu extends React.Component {
                 usedLetters: [],
                 error: 0,
                 mot: this.props.navigation.state.params.mot,
+                joueur: this.props.navigation.state.params.joueur,
                 disabledA: false,
                 disabledB: false,
                 disabledC: false,
@@ -130,7 +133,7 @@ class Jeu extends React.Component {
                 disabledY: false,
                 disabledZ: false
             })
-            this.props.navigation.navigate('EndGame', { mot: mot, status: "GAGNE" })
+            this.props.navigation.navigate('EndGame', { mot: mot, status: "GAGNE", joueur: this.state.joueur })
         } else {
             {/* On set le State d'un coup avec totues les valeurs modifiées si le jeu n'est pas gagné/perdu */
             }
