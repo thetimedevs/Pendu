@@ -35,12 +35,6 @@ class Menu extends React.Component {
       <Text style={styles.appButtonText}>2 Joueurs</Text>
     </TouchableOpacity>
 
-    {/* Button Option */}
-      <Text>{'\n\n\n\n'}</Text>
-    <TouchableOpacity style={styles.appButtonContainer_option}>
-      <Text style={styles.appButtonText}>Option</Text>
-    </TouchableOpacity>
-
         <StatusBar backgroundColor='orange' barStyle='light-content'/>
         </ImageBackground>
       </View>

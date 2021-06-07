@@ -33,7 +33,7 @@ class EndGame extends React.Component {
       <ImageBackground source={require('../assets/fond.png')} style={styles.image} blurRadius={2}>
       <View style={[styles.text]}>{this.img_lost}</View>
         <Text style={[styles.titre, styles.titre]}>Jeu du pendu !{'\n\n'}{this.msg} !!</Text>
-        
+
 
     {/* Button 1 Joueur */}
     <Text style={[styles.text]}>Vous avez {this.state.status} la partie !! {'\n'}</Text>
