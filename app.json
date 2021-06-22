@@ -27,7 +27,7 @@
       "package": "cd.pendu.app"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/pendu_ico.png"
     }
   }
 }
