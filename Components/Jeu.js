@@ -99,7 +99,6 @@ class Jeu extends React.Component {
           this.props.navigation.navigate('EndGame', { mot: mot, status: "PERDU", joueur: this.state.joueur })
         }
         else if(foundLetters === mot.length){
-            let mot = this.state.mot
             this.setState({
                 foundLetters: 0,
                 usedLetters: [],

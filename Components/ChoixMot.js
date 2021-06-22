@@ -23,7 +23,7 @@ class ChoixMot extends React.Component {
       return (
         <View style={styles.container}>
           <ImageBackground source={require('../assets/fond_arbres.png')} style={styles.image} blurRadius={2}>
-          <Text style={styles.titre}>Choisissez votre mot {"\n"}(entre 5 et 14 lettres)</Text>
+          <Text style={styles.titre}>Choisissez votre mot {"\n"}(entre 5 et 11 lettres)</Text>
           <TextInput style={styles.TextInput}
             placeholder='Choix du mot'
             value={this.state.word}
@@ -34,8 +34,8 @@ class ChoixMot extends React.Component {
         <Text> </Text>
         <TouchableOpacity
         onPress={() => this._play()}
-        style={(this.state.word.length < 5 || this.state.word.length > 14)?{...styles.disabled}:styles.button}
-        disabled={this.state.word.length < 5 || this.state.word.length > 14}>
+        style={(this.state.word.length < 5 || this.state.word.length > 11)?{...styles.disabled}:styles.button}
+        disabled={this.state.word.length < 5 || this.state.word.length > 11}>
         <Text style={styles.appButtonText}>Jouer</Text>
         </TouchableOpacity>
           </ImageBackground>

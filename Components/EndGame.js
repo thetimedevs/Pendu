@@ -27,11 +27,11 @@ class EndGame extends React.Component {
 
   render() {
       if(this.state.status === "GAGNE"){
-          this.img_lost = <Image style={styles.pendu_img} source={{uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/docomo/205/thumbs-up-sign_1f44d.png'}}/>
+          this.img_lost = <Image style={styles.pendu_img} source={require('../assets/thumbs-up-sign_1f44d.png')}/>
           this.msg = 'BRAVO'
       } else if(this.state.status === "PERDU") {
         this.msg = 'DOMMAGE'
-        this.img_lost = <Image style={styles.pendu_img} source={{uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/joypixels/275/crying-face_1f622.png'}}/>
+        this.img_lost = <Image style={styles.pendu_img} source={require('../assets/crying-face_1f622.png')}/>
       }
    return (
     <View style={[styles.container]}>
