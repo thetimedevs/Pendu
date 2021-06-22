@@ -3,6 +3,9 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "prebuild": "npm react-native bundle --platform android --dev false --entry-file App.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "build": "cd android && gradlew assembleDebug && cd ../",
+    "clear": "cd android && gradlew clean && cd ../",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
