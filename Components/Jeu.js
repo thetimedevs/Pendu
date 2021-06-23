@@ -39,6 +39,11 @@ class Jeu extends React.Component {
         }
     }
 
+    static getDerivedStateFromProps(props, state){
+        state.mot = props.navigation.state.params.mot
+        return state
+    }
+
     _input(value) {
         {/* Récupération des données du state */}
         let mot = this.state.mot
@@ -62,12 +67,11 @@ class Jeu extends React.Component {
         }
         {/* Navigations Reussite / Echec */}
         if(error === 7) {
-            let mot = this.state.mot
             this.setState({
                 foundLetters: 0,
                 usedLetters: [],
                 error: 0,
-                mot: this.props.navigation.state.params.mot,
+                mot: mot,
                 joueur: this.props.navigation.state.params.joueur,
                 disabledA: false,
                 disabledB: false,
@@ -103,7 +107,7 @@ class Jeu extends React.Component {
                 foundLetters: 0,
                 usedLetters: [],
                 error: 0,
-                mot: this.props.navigation.state.params.mot,
+                mot: mot,
                 joueur: this.props.navigation.state.params.joueur,
                 disabledA: false,
                 disabledB: false,
@@ -138,7 +142,6 @@ class Jeu extends React.Component {
             }
             this.setState({
                 [toDisable]: true,
-                mot: mot,
                 error: error,
                 foundLetters: foundLetters,
                 usedLetters: usedLetters

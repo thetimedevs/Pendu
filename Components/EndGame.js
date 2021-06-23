@@ -15,7 +15,8 @@ class EndGame extends React.Component {
 
   _rej() {
     if(this.state.joueur === "1"){
-    this.props.navigation.navigate('Jeu', { mot: words.word[Math.floor(Math.random() * words.word.length)], joueur: this.state.joueur })
+      let nouveauMot = words.word[Math.floor(Math.random() * words.word.length)]
+      this.props.navigation.navigate('Jeu', { mot: nouveauMot, joueur: this.state.joueur })
     }else if(this.state.joueur === "2"){
       this.props.navigation.navigate('ChoixMot', {joueur: this.state.joueur, mot: ''})
     }
