@@ -1,37 +1,20 @@
 ## Bienvenue sur le Pendu
 
-You can use the [editor on GitHub](https://github.com/Romdu57/Pendu/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Durant la période de mon stage j'ai eu la chance de rencontré d'ancien développeur [Jorek](https://github.com/Jorek57) qui m'a proposé de faire un pendu en [React Native](https://reactnative.dev).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Je suis vraiment content d'avoir fait se pendu durant ces périodes, pour voir le projet du Pendu vous pouvez cliquer [ici](https://github.com/Romdu57/Pendu/) et ainsi le testé.
 
-### Markdown
+### Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Pour télécharger vous pouvez le télécharger en cliquant sur le bouton `code` qui est en vert en haut de la liste des fichiers ou en téléchargent le [zip](https://github.com/Romdu57/Pendu/archive/refs/heads/main.zip) ou le clone grâce à git avec la commande : `git clone https://github.com/Romdu57/Pendu.git`
+Pour installer les package du projet alors il fait ainsi faire la commande : `npm install` et pour le lancer : `npm start` mais pour faire ça il faut avoir [node](https://nodejs.org/)
 
-```markdown
-Syntax highlighted code block
+### Le code
 
-# Header 1
-## Header 2
-### Header 3
+Le code est assez simple (Si on le comprend), je ne connaissais pas le `JS React Native` (Même jamais entendu parler) mais, moi qui aime bien le développement, j'ai accepté le défi de faire un pendu en `React Native` (Avec de l'aide, bien sûr)
 
-- Bulleted
-- List
+Je me suis aidé de tuto Youtube et de la documentation.
 
-1. Numbered
-2. List
+### Le temps
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Romdu57/Pendu/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Pour le temps ce n’est pas compliquer, j'avais deux périodes de stage donc je n'avais pas le temps de le faire pendant 3 semaines donc comme j'ai une bonne relation avec mon maître de stage alors je lui ai proposé de continuer en dehors du stage (se qui était prévu de base)
