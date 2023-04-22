@@ -6,7 +6,8 @@ Je suis vraiment content d’avoir fait ce pendu, pour voir le projet vous pouve
 
 ### Installation
 
-Vous pouvez le télécharger en cliquant sur le bouton `code` qui est en vert en haut de la liste des fichiers, télécharger le [zip](https://github.com/thetimedevs/Pendu/archive/refs/heads/main.zip) ou le clone grâce à git avec la commande : `git clone [https://github.com/thetimedevs/Pendu.git](https://github.com/thetimedevs/Pendu/archive/refs/heads/main.zip)`
+Vous pouvez le télécharger en cliquant sur le bouton `code` qui est en vert en haut de la liste des fichiers, télécharger le [zip](https://github.com/thetimedevs/Pendu/archive/refs/heads/main.zip) ou le clone grâce à git avec la commande : `git clone https://github.com/thetimedevs/Pendu.git`
+
 Pour installer les package du projet alors il fait ainsi faire la commande : `npm install` et pour le lancer : `npm start` (nécéssite [nodejs](https://nodejs.org/))
 
 ### Le code
