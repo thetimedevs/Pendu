@@ -2,11 +2,11 @@
 
 Durant la période de mon stage j’ai eu la chance de rencontré le développeur [Jorek](https://github.com/Jorek57) qui m’a proposé de faire un pendu en [React Native](https://reactnative.dev).
 
-Je suis vraiment content d’avoir fait ce pendu, pour voir le projet vous pouvez cliquer [ici](https://github.com/Romdu57/Pendu/) et ainsi le tester.
+Je suis vraiment content d’avoir fait ce pendu, pour voir le projet vous pouvez cliquer [ici](https://github.com/thetimedevs/Pendu/) et ainsi le tester.
 
 ### Installation
 
-Vous pouvez le télécharger en cliquant sur le bouton `code` qui est en vert en haut de la liste des fichiers, télécharger le [zip](https://github.com/Romdu57/Pendu/archive/refs/heads/main.zip) ou le clone grâce à git avec la commande : `git clone https://github.com/Romdu57/Pendu.git`
+Vous pouvez le télécharger en cliquant sur le bouton `code` qui est en vert en haut de la liste des fichiers, télécharger le [zip](https://github.com/thetimedevs/Pendu/archive/refs/heads/main.zip) ou le clone grâce à git avec la commande : `git clone [https://github.com/Romdu57/Pendu.git](https://github.com/thetimedevs/Pendu/archive/refs/heads/main.zip)`
 Pour installer les package du projet alors il fait ainsi faire la commande : `npm install` et pour le lancer : `npm start` (nécéssite [nodejs](https://nodejs.org/))
 
 ### Le code
